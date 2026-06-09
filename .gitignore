@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 wget-log
+.env
+subtitles_asr/

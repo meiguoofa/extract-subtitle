@@ -1,0 +1,4412 @@
+{
+  "attribute": {
+    "extra": {
+      "asr_service": "asr",
+      "caption_type": "auto_caption_type",
+      "is_mandarin": "True",
+      "is_singing": "True",
+      "is_speech": "True",
+      "language": "zh-CN"
+    }
+  },
+  "code": 0,
+  "duration": 170.9491875,
+  "id": "c28bdbe8-55dd-46f0-8a32-2e8c1c0f8ed6",
+  "message": "Success",
+  "utterances": [
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 35840,
+      "start_time": 34600,
+      "text": "请问鬼差大哥",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 34720,
+          "start_time": 34600,
+          "text": "请"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 34920,
+          "start_time": 34720,
+          "text": "问"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 35120,
+          "start_time": 34920,
+          "text": "鬼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 35240,
+          "start_time": 35120,
+          "text": "差"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 35400,
+          "start_time": 35240,
+          "text": "大"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 35840,
+          "start_time": 35400,
+          "text": "哥"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 37220,
+      "start_time": 35840,
+      "text": "这里是哪里",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 36040,
+          "start_time": 35840,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 36240,
+          "start_time": 36040,
+          "text": "里"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 36440,
+          "start_time": 36280,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 36600,
+          "start_time": 36440,
+          "text": "哪"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 37220,
+          "start_time": 36600,
+          "text": "里"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 39360,
+      "start_time": 37240,
+      "text": "你都叫我鬼差大哥了",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 37560,
+          "start_time": 37240,
+          "text": "你"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 37720,
+          "start_time": 37560,
+          "text": "都"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 37960,
+          "start_time": 37760,
+          "text": "叫"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 38160,
+          "start_time": 37960,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 38360,
+          "start_time": 38160,
+          "text": "鬼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 38560,
+          "start_time": 38400,
+          "text": "差"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 38840,
+          "start_time": 38600,
+          "text": "大"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 39080,
+          "start_time": 38840,
+          "text": "哥"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 39360,
+          "start_time": 39080,
+          "text": "了"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 41100,
+      "start_time": 39360,
+      "text": "你说这里是哪里",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 39800,
+          "start_time": 39360,
+          "text": "你"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 40000,
+          "start_time": 39800,
+          "text": "说"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 40200,
+          "start_time": 40000,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 40280,
+          "start_time": 40200,
+          "text": "里"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 40440,
+          "start_time": 40280,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 40600,
+          "start_time": 40440,
+          "text": "哪"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 41100,
+          "start_time": 40600,
+          "text": "里"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 42120,
+      "start_time": 41320,
+      "text": "对啊",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 41560,
+          "start_time": 41320,
+          "text": "对"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 42120,
+          "start_time": 41560,
+          "text": "啊"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 44960,
+      "start_time": 42200,
+      "text": "为何我对这里感觉十分熟悉呢",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 42480,
+          "start_time": 42200,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 42680,
+          "start_time": 42480,
+          "text": "何"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 42880,
+          "start_time": 42680,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 42960,
+          "start_time": 42880,
+          "text": "对"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 43000,
+          "start_time": 42960,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 43320,
+          "start_time": 43120,
+          "text": "里"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 43560,
+          "start_time": 43320,
+          "text": "感"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 43720,
+          "start_time": 43560,
+          "text": "觉"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 43920,
+          "start_time": 43720,
+          "text": "十"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 44080,
+          "start_time": 43920,
+          "text": "分"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 44400,
+          "start_time": 44160,
+          "text": "熟"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 44600,
+          "start_time": 44400,
+          "text": "悉"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 44960,
+          "start_time": 44600,
+          "text": "呢"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 46720,
+      "start_time": 44960,
+      "text": "而且本能的称呼",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 45240,
+          "start_time": 44960,
+          "text": "而"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 45520,
+          "start_time": 45240,
+          "text": "且"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 45800,
+          "start_time": 45600,
+          "text": "本"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 46000,
+          "start_time": 45800,
+          "text": "能"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 46160,
+          "start_time": 46000,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 46400,
+          "start_time": 46200,
+          "text": "称"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 46720,
+          "start_time": 46400,
+          "text": "呼"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 49540,
+      "start_time": 46720,
+      "text": "这从未见过的怪人为鬼差",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 46880,
+          "start_time": 46720,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 47160,
+          "start_time": 46880,
+          "text": "从"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 47360,
+          "start_time": 47160,
+          "text": "未"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 47600,
+          "start_time": 47400,
+          "text": "见"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 47720,
+          "start_time": 47600,
+          "text": "过"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 47920,
+          "start_time": 47720,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 48120,
+          "start_time": 47920,
+          "text": "怪"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 48480,
+          "start_time": 48160,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 48800,
+          "start_time": 48520,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 49000,
+          "start_time": 48800,
+          "text": "鬼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 49540,
+          "start_time": 49040,
+          "text": "差"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 51700,
+      "start_time": 49720,
+      "text": "难道我是死了",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 50040,
+          "start_time": 49720,
+          "text": "难"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 50320,
+          "start_time": 50040,
+          "text": "道"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 50680,
+          "start_time": 50400,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 50840,
+          "start_time": 50680,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 51160,
+          "start_time": 50840,
+          "text": "死"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 51700,
+          "start_time": 51160,
+          "text": "了"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 53740,
+      "start_time": 51840,
+      "text": "这里就是地府",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 52120,
+          "start_time": 51840,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 52320,
+          "start_time": 52120,
+          "text": "里"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 52680,
+          "start_time": 52440,
+          "text": "就"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 52840,
+          "start_time": 52680,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 53120,
+          "start_time": 52880,
+          "text": "地"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 53740,
+          "start_time": 53160,
+          "text": "府"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 56420,
+      "start_time": 54160,
+      "text": "这里是地府吗",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 54400,
+          "start_time": 54160,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 54640,
+          "start_time": 54400,
+          "text": "里"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 55360,
+          "start_time": 55120,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 55600,
+          "start_time": 55360,
+          "text": "地"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 55840,
+          "start_time": 55600,
+          "text": "府"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 56420,
+          "start_time": 55840,
+          "text": "吗"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 58060,
+      "start_time": 56680,
+      "text": "地府还没有到",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 56800,
+          "start_time": 56680,
+          "text": "地"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 57040,
+          "start_time": 56840,
+          "text": "府"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 57240,
+          "start_time": 57040,
+          "text": "还"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 57360,
+          "start_time": 57240,
+          "text": "没"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 57520,
+          "start_time": 57360,
+          "text": "有"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 58060,
+          "start_time": 57520,
+          "text": "到"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 61320,
+      "start_time": 58160,
+      "text": "过了前面的鬼门关才算到了地府",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 58360,
+          "start_time": 58160,
+          "text": "过"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 58560,
+          "start_time": 58360,
+          "text": "了"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 58760,
+          "start_time": 58560,
+          "text": "前"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 58880,
+          "start_time": 58760,
+          "text": "面"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 59040,
+          "start_time": 58880,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 59240,
+          "start_time": 59040,
+          "text": "鬼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 59440,
+          "start_time": 59240,
+          "text": "门"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 59640,
+          "start_time": 59440,
+          "text": "关"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 60080,
+          "start_time": 59800,
+          "text": "才"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 60280,
+          "start_time": 60080,
+          "text": "算"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 60600,
+          "start_time": 60400,
+          "text": "到"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 60720,
+          "start_time": 60600,
+          "text": "了"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 60920,
+          "start_time": 60720,
+          "text": "地"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 61320,
+          "start_time": 60920,
+          "text": "府"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 63620,
+      "start_time": 61320,
+      "text": "我我这是死了吗",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 61800,
+          "start_time": 61320,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 62280,
+          "start_time": 61840,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 62440,
+          "start_time": 62280,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 62600,
+          "start_time": 62440,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 62920,
+          "start_time": 62600,
+          "text": "死"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 63040,
+          "start_time": 62920,
+          "text": "了"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 63620,
+          "start_time": 63040,
+          "text": "吗"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 66700,
+      "start_time": 63880,
+      "text": "废话活人能到这里来吗",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 64120,
+          "start_time": 63880,
+          "text": "废"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 64360,
+          "start_time": 64160,
+          "text": "话"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 65160,
+          "start_time": 64960,
+          "text": "活"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 65400,
+          "start_time": 65160,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 65600,
+          "start_time": 65400,
+          "text": "能"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 65720,
+          "start_time": 65600,
+          "text": "到"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 65880,
+          "start_time": 65720,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 66000,
+          "start_time": 65880,
+          "text": "里"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 66160,
+          "start_time": 66000,
+          "text": "来"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 66700,
+          "start_time": 66160,
+          "text": "吗"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 70100,
+      "start_time": 66800,
+      "text": "啊我我死了",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 67160,
+          "start_time": 66800,
+          "text": "啊"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 67920,
+          "start_time": 67600,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 68800,
+          "start_time": 68360,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 69520,
+          "start_time": 68880,
+          "text": "死"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 70100,
+          "start_time": 69520,
+          "text": "了"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 72980,
+      "start_time": 70200,
+      "text": "你说呢我叫方达",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 70640,
+          "start_time": 70200,
+          "text": "你"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 70840,
+          "start_time": 70640,
+          "text": "说"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 71120,
+          "start_time": 70840,
+          "text": "呢"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 71960,
+          "start_time": 71840,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 72160,
+          "start_time": 71960,
+          "text": "叫"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 72440,
+          "start_time": 72200,
+          "text": "方"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 72980,
+          "start_time": 72440,
+          "text": "达"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 75820,
+      "start_time": 73200,
+      "text": "是一个普通家庭出生的孩子",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 73320,
+          "start_time": 73200,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 73440,
+          "start_time": 73320,
+          "text": "一"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 73680,
+          "start_time": 73440,
+          "text": "个"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 73920,
+          "start_time": 73720,
+          "text": "普"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 74080,
+          "start_time": 73920,
+          "text": "通"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 74320,
+          "start_time": 74120,
+          "text": "家"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 74520,
+          "start_time": 74320,
+          "text": "庭"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 74800,
+          "start_time": 74600,
+          "text": "出"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 74920,
+          "start_time": 74800,
+          "text": "生"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 75080,
+          "start_time": 74920,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 75320,
+          "start_time": 75080,
+          "text": "孩"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 75820,
+          "start_time": 75320,
+          "text": "子"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 76480,
+      "start_time": 75960,
+      "text": "打小",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 76200,
+          "start_time": 75960,
+          "text": "打"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 76480,
+          "start_time": 76200,
+          "text": "小"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 79820,
+      "start_time": 76480,
+      "text": "我就是很多家长口中别人家的孩子",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 76720,
+          "start_time": 76480,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 76880,
+          "start_time": 76720,
+          "text": "就"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 76960,
+          "start_time": 76880,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 77200,
+          "start_time": 76960,
+          "text": "很"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 77360,
+          "start_time": 77200,
+          "text": "多"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 77600,
+          "start_time": 77360,
+          "text": "家"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 77760,
+          "start_time": 77600,
+          "text": "长"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 78040,
+          "start_time": 77800,
+          "text": "口"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 78240,
+          "start_time": 78040,
+          "text": "中"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 78560,
+          "start_time": 78320,
+          "text": "别"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 78760,
+          "start_time": 78560,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 78920,
+          "start_time": 78760,
+          "text": "家"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 79040,
+          "start_time": 78920,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 79280,
+          "start_time": 79040,
+          "text": "孩"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 79820,
+          "start_time": 79280,
+          "text": "子"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 82120,
+      "start_time": 79840,
+      "text": "并不是因为我天赋异禀",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 80080,
+          "start_time": 79840,
+          "text": "并"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 80240,
+          "start_time": 80080,
+          "text": "不"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 80360,
+          "start_time": 80240,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 80560,
+          "start_time": 80360,
+          "text": "因"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 80800,
+          "start_time": 80560,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 81000,
+          "start_time": 80800,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 81320,
+          "start_time": 81040,
+          "text": "天"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 81520,
+          "start_time": 81320,
+          "text": "赋"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 81720,
+          "start_time": 81520,
+          "text": "异"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 82120,
+          "start_time": 81720,
+          "text": "禀"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 83120,
+      "start_time": 82120,
+      "text": "资质过人",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 82320,
+          "start_time": 82120,
+          "text": "资"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 82520,
+          "start_time": 82320,
+          "text": "质"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 82720,
+          "start_time": 82520,
+          "text": "过"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 83120,
+          "start_time": 82720,
+          "text": "人"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 86460,
+      "start_time": 83120,
+      "text": "只是因为我比身边的所有人都全",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 83360,
+          "start_time": 83120,
+          "text": "只"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 83600,
+          "start_time": 83360,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 83760,
+          "start_time": 83600,
+          "text": "因"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 84040,
+          "start_time": 83760,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 84280,
+          "start_time": 84040,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 84440,
+          "start_time": 84280,
+          "text": "比"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 84680,
+          "start_time": 84480,
+          "text": "身"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 84840,
+          "start_time": 84680,
+          "text": "边"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 85040,
+          "start_time": 84840,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 85280,
+          "start_time": 85040,
+          "text": "所"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 85360,
+          "start_time": 85280,
+          "text": "有"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 85600,
+          "start_time": 85360,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 85840,
+          "start_time": 85640,
+          "text": "都"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 86460,
+          "start_time": 85920,
+          "text": "全"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 88040,
+      "start_time": 86480,
+      "text": "我的同学和同事们",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 86760,
+          "start_time": 86480,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 86880,
+          "start_time": 86760,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 87120,
+          "start_time": 86880,
+          "text": "同"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 87320,
+          "start_time": 87120,
+          "text": "学"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 87480,
+          "start_time": 87320,
+          "text": "和"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 87720,
+          "start_time": 87480,
+          "text": "同"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 87880,
+          "start_time": 87720,
+          "text": "事"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 88040,
+          "start_time": 87880,
+          "text": "们"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 91100,
+      "start_time": 88040,
+      "text": "都亲切的称呼我为卷王",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 88240,
+          "start_time": 88040,
+          "text": "都"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 88600,
+          "start_time": 88280,
+          "text": "亲"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 88760,
+          "start_time": 88600,
+          "text": "切"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 88920,
+          "start_time": 88760,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 89120,
+          "start_time": 88960,
+          "text": "称"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 89320,
+          "start_time": 89120,
+          "text": "呼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 89520,
+          "start_time": 89320,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 89760,
+          "start_time": 89560,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 90360,
+          "start_time": 90280,
+          "text": "卷"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 91100,
+          "start_time": 90520,
+          "text": "王"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 92920,
+      "start_time": 91160,
+      "text": "因为我特别能卷",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 91400,
+          "start_time": 91160,
+          "text": "因"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 91560,
+          "start_time": 91400,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 91760,
+          "start_time": 91560,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 92120,
+          "start_time": 91800,
+          "text": "特"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 92280,
+          "start_time": 92120,
+          "text": "别"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 92480,
+          "start_time": 92280,
+          "text": "能"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 92920,
+          "start_time": 92520,
+          "text": "卷"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 93920,
+      "start_time": 92920,
+      "text": "特别会卷",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 93160,
+          "start_time": 92920,
+          "text": "特"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 93320,
+          "start_time": 93160,
+          "text": "别"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 93560,
+          "start_time": 93360,
+          "text": "会"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 93920,
+          "start_time": 93640,
+          "text": "卷"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 95380,
+      "start_time": 93920,
+      "text": "也特别爱卷",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 94200,
+          "start_time": 93920,
+          "text": "也"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 94440,
+          "start_time": 94240,
+          "text": "特"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 94600,
+          "start_time": 94440,
+          "text": "别"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 94840,
+          "start_time": 94600,
+          "text": "爱"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 95380,
+          "start_time": 94880,
+          "text": "卷"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 98940,
+      "start_time": 95480,
+      "text": "对卷赢别人后的胜利感乐此不疲",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 95680,
+          "start_time": 95480,
+          "text": "对"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 95960,
+          "start_time": 95760,
+          "text": "卷"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 96200,
+          "start_time": 96040,
+          "text": "赢"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 96480,
+          "start_time": 96240,
+          "text": "别"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 96600,
+          "start_time": 96480,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 96760,
+          "start_time": 96600,
+          "text": "后"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 97000,
+          "start_time": 96760,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 97200,
+          "start_time": 97000,
+          "text": "胜"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 97400,
+          "start_time": 97200,
+          "text": "利"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 97600,
+          "start_time": 97400,
+          "text": "感"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 98000,
+          "start_time": 97760,
+          "text": "乐"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 98240,
+          "start_time": 98000,
+          "text": "此"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 98400,
+          "start_time": 98240,
+          "text": "不"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 98940,
+          "start_time": 98400,
+          "text": "疲"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 103380,
+      "start_time": 99360,
+      "text": "所以我身边的人没有人能够卷过我",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 99600,
+          "start_time": 99360,
+          "text": "所"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 99800,
+          "start_time": 99600,
+          "text": "以"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 100240,
+          "start_time": 99880,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 100480,
+          "start_time": 100280,
+          "text": "身"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 100640,
+          "start_time": 100480,
+          "text": "边"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 100800,
+          "start_time": 100640,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 101080,
+          "start_time": 100800,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 101400,
+          "start_time": 101120,
+          "text": "没"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 101640,
+          "start_time": 101400,
+          "text": "有"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 101880,
+          "start_time": 101640,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 102160,
+          "start_time": 101920,
+          "text": "能"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 102320,
+          "start_time": 102160,
+          "text": "够"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 102560,
+          "start_time": 102360,
+          "text": "卷"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 102840,
+          "start_time": 102640,
+          "text": "过"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 103380,
+          "start_time": 102840,
+          "text": "我"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 105680,
+      "start_time": 103480,
+      "text": "我从小学习成绩优异",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 103800,
+          "start_time": 103480,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 104040,
+          "start_time": 103800,
+          "text": "从"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 104280,
+          "start_time": 104040,
+          "text": "小"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 104560,
+          "start_time": 104320,
+          "text": "学"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 104720,
+          "start_time": 104560,
+          "text": "习"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 104960,
+          "start_time": 104720,
+          "text": "成"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 105080,
+          "start_time": 104960,
+          "text": "绩"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 105280,
+          "start_time": 105120,
+          "text": "优"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 105680,
+          "start_time": 105280,
+          "text": "异"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 108100,
+      "start_time": 105680,
+      "text": "如愿以偿地考入了名校",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 106000,
+          "start_time": 105680,
+          "text": "如"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 106200,
+          "start_time": 106000,
+          "text": "愿"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 106400,
+          "start_time": 106240,
+          "text": "以"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 106600,
+          "start_time": 106400,
+          "text": "偿"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 106800,
+          "start_time": 106640,
+          "text": "地"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 107080,
+          "start_time": 106800,
+          "text": "考"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 107200,
+          "start_time": 107080,
+          "text": "入"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 107360,
+          "start_time": 107200,
+          "text": "了"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 107560,
+          "start_time": 107360,
+          "text": "名"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 108100,
+          "start_time": 107600,
+          "text": "校"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 111520,
+      "start_time": 108280,
+      "text": "在清北大学艺研究生学历毕业",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 108640,
+          "start_time": 108280,
+          "text": "在"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 108960,
+          "start_time": 108680,
+          "text": "清"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 109120,
+          "start_time": 108960,
+          "text": "北"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 109320,
+          "start_time": 109120,
+          "text": "大"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 109600,
+          "start_time": 109400,
+          "text": "学"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 109800,
+          "start_time": 109600,
+          "text": "艺"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 110000,
+          "start_time": 109800,
+          "text": "研"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 110200,
+          "start_time": 110000,
+          "text": "究"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 110400,
+          "start_time": 110200,
+          "text": "生"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 110640,
+          "start_time": 110440,
+          "text": "学"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 110840,
+          "start_time": 110680,
+          "text": "历"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 111040,
+          "start_time": 110840,
+          "text": "毕"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 111520,
+          "start_time": 111040,
+          "text": "业"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 114580,
+      "start_time": 111520,
+      "text": "如愿以偿地进入一家跨国集团",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 111840,
+          "start_time": 111520,
+          "text": "如"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 112040,
+          "start_time": 111840,
+          "text": "愿"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 112240,
+          "start_time": 112080,
+          "text": "以"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 112440,
+          "start_time": 112240,
+          "text": "偿"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 112600,
+          "start_time": 112480,
+          "text": "地"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 112800,
+          "start_time": 112600,
+          "text": "进"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 112960,
+          "start_time": 112800,
+          "text": "入"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 113120,
+          "start_time": 112960,
+          "text": "一"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 113320,
+          "start_time": 113120,
+          "text": "家"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 113640,
+          "start_time": 113360,
+          "text": "跨"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 113880,
+          "start_time": 113680,
+          "text": "国"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 114040,
+          "start_time": 113880,
+          "text": "集"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 114580,
+          "start_time": 114040,
+          "text": "团"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 117000,
+      "start_time": 114720,
+      "text": "又如愿以偿地在28岁",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 115040,
+          "start_time": 114720,
+          "text": "又"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 115280,
+          "start_time": 115080,
+          "text": "如"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 115480,
+          "start_time": 115280,
+          "text": "愿"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 115640,
+          "start_time": 115520,
+          "text": "以"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 115880,
+          "start_time": 115680,
+          "text": "偿"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 116040,
+          "start_time": 115880,
+          "text": "地"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 116160,
+          "start_time": 116040,
+          "text": "在"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 116680,
+          "start_time": 116160,
+          "text": "28"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 117000,
+          "start_time": 116680,
+          "text": "岁"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 120180,
+      "start_time": 117000,
+      "text": "晋升为该集团公司的中层管理人员",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 117200,
+          "start_time": 117000,
+          "text": "晋"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 117400,
+          "start_time": 117240,
+          "text": "升"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 117600,
+          "start_time": 117400,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 117800,
+          "start_time": 117600,
+          "text": "该"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 117960,
+          "start_time": 117840,
+          "text": "集"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 118120,
+          "start_time": 117960,
+          "text": "团"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 118360,
+          "start_time": 118200,
+          "text": "公"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 118560,
+          "start_time": 118360,
+          "text": "司"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 118720,
+          "start_time": 118560,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 118960,
+          "start_time": 118720,
+          "text": "中"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 119160,
+          "start_time": 118960,
+          "text": "层"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 119360,
+          "start_time": 119200,
+          "text": "管"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 119520,
+          "start_time": 119360,
+          "text": "理"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 119680,
+          "start_time": 119520,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 120180,
+          "start_time": 119680,
+          "text": "员"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 124180,
+      "start_time": 120520,
+      "text": "成为该集团公司最年轻的中层干部",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 120600,
+          "start_time": 120520,
+          "text": "成"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 120880,
+          "start_time": 120600,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 121160,
+          "start_time": 120920,
+          "text": "该"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 121320,
+          "start_time": 121160,
+          "text": "集"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 121520,
+          "start_time": 121320,
+          "text": "团"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 121760,
+          "start_time": 121560,
+          "text": "公"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 122080,
+          "start_time": 121760,
+          "text": "司"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 122440,
+          "start_time": 122200,
+          "text": "最"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 122720,
+          "start_time": 122480,
+          "text": "年"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 122880,
+          "start_time": 122720,
+          "text": "轻"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 123080,
+          "start_time": 122880,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 123320,
+          "start_time": 123120,
+          "text": "中"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 123480,
+          "start_time": 123320,
+          "text": "层"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 123680,
+          "start_time": 123480,
+          "text": "干"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 124180,
+          "start_time": 123680,
+          "text": "部"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 126240,
+      "start_time": 124200,
+      "text": "今天是我晋升后",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 124400,
+          "start_time": 124200,
+          "text": "今"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 124680,
+          "start_time": 124400,
+          "text": "天"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 125280,
+          "start_time": 125040,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 125480,
+          "start_time": 125280,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 125680,
+          "start_time": 125480,
+          "text": "晋"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 125920,
+          "start_time": 125720,
+          "text": "升"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 126240,
+          "start_time": 125920,
+          "text": "后"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 128620,
+      "start_time": 126240,
+      "text": "参与的第一个重要项目投标",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 126480,
+          "start_time": 126240,
+          "text": "参"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 126680,
+          "start_time": 126520,
+          "text": "与"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 126880,
+          "start_time": 126680,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 127040,
+          "start_time": 126880,
+          "text": "第"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 127160,
+          "start_time": 127040,
+          "text": "一"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 127320,
+          "start_time": 127160,
+          "text": "个"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 127480,
+          "start_time": 127320,
+          "text": "重"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 127640,
+          "start_time": 127480,
+          "text": "要"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 127800,
+          "start_time": 127640,
+          "text": "项"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 127920,
+          "start_time": 127800,
+          "text": "目"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 128120,
+          "start_time": 127920,
+          "text": "投"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 128620,
+          "start_time": 128120,
+          "text": "标"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 131940,
+      "start_time": 128760,
+      "text": "在去参加投标的路上出了车祸",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 129040,
+          "start_time": 128760,
+          "text": "在"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 129280,
+          "start_time": 129040,
+          "text": "去"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 129520,
+          "start_time": 129320,
+          "text": "参"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 129720,
+          "start_time": 129520,
+          "text": "加"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 129960,
+          "start_time": 129760,
+          "text": "投"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 130160,
+          "start_time": 130000,
+          "text": "标"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 130280,
+          "start_time": 130160,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 130480,
+          "start_time": 130280,
+          "text": "路"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 130680,
+          "start_time": 130480,
+          "text": "上"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 131040,
+          "start_time": 130800,
+          "text": "出"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 131160,
+          "start_time": 131040,
+          "text": "了"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 131400,
+          "start_time": 131200,
+          "text": "车"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 131940,
+          "start_time": 131440,
+          "text": "祸"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 135120,
+      "start_time": 132160,
+      "text": "我好像只记得救护车的声音",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 132480,
+          "start_time": 132160,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 132640,
+          "start_time": 132480,
+          "text": "好"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 132840,
+          "start_time": 132640,
+          "text": "像"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 133080,
+          "start_time": 132840,
+          "text": "只"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 133280,
+          "start_time": 133080,
+          "text": "记"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 133480,
+          "start_time": 133280,
+          "text": "得"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 134080,
+          "start_time": 133880,
+          "text": "救"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 134240,
+          "start_time": 134080,
+          "text": "护"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 134400,
+          "start_time": 134240,
+          "text": "车"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 134600,
+          "start_time": 134400,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 134760,
+          "start_time": 134600,
+          "text": "声"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 135120,
+          "start_time": 134760,
+          "text": "音"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 137620,
+      "start_time": 135120,
+      "text": "自远而近奔驰而来",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 135400,
+          "start_time": 135120,
+          "text": "自"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 135600,
+          "start_time": 135400,
+          "text": "远"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 135880,
+          "start_time": 135640,
+          "text": "而"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 136120,
+          "start_time": 135880,
+          "text": "近"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 136520,
+          "start_time": 136320,
+          "text": "奔"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 136840,
+          "start_time": 136600,
+          "text": "驰"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 137120,
+          "start_time": 136840,
+          "text": "而"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 137620,
+          "start_time": 137120,
+          "text": "来"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 139620,
+      "start_time": 137640,
+      "text": "后面就失去了知觉",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 137880,
+          "start_time": 137640,
+          "text": "后"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 138080,
+          "start_time": 137880,
+          "text": "面"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 138320,
+          "start_time": 138120,
+          "text": "就"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 138560,
+          "start_time": 138320,
+          "text": "失"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 138680,
+          "start_time": 138560,
+          "text": "去"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 138840,
+          "start_time": 138680,
+          "text": "了"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 139080,
+          "start_time": 138880,
+          "text": "知"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 139620,
+          "start_time": 139080,
+          "text": "觉"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 141780,
+      "start_time": 139920,
+      "text": "再次有意识的时候",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 140040,
+          "start_time": 139920,
+          "text": "再"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 140320,
+          "start_time": 140040,
+          "text": "次"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 140520,
+          "start_time": 140320,
+          "text": "有"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 140760,
+          "start_time": 140520,
+          "text": "意"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 140960,
+          "start_time": 140760,
+          "text": "识"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 141120,
+          "start_time": 140960,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 141280,
+          "start_time": 141120,
+          "text": "时"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 141780,
+          "start_time": 141280,
+          "text": "候"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 143680,
+      "start_time": 141800,
+      "text": "就是被这个从未谋面",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 142040,
+          "start_time": 141800,
+          "text": "就"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 142200,
+          "start_time": 142040,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 142320,
+          "start_time": 142200,
+          "text": "被"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 142440,
+          "start_time": 142320,
+          "text": "这"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 142680,
+          "start_time": 142440,
+          "text": "个"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 143000,
+          "start_time": 142720,
+          "text": "从"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 143200,
+          "start_time": 143040,
+          "text": "未"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 143440,
+          "start_time": 143240,
+          "text": "谋"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 143680,
+          "start_time": 143440,
+          "text": "面"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 146480,
+      "start_time": 143680,
+      "text": "我却一眼就认出是鬼差的大哥",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 143920,
+          "start_time": 143680,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 144080,
+          "start_time": 143920,
+          "text": "却"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 144320,
+          "start_time": 144080,
+          "text": "一"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 144520,
+          "start_time": 144320,
+          "text": "眼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 144720,
+          "start_time": 144560,
+          "text": "就"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 144880,
+          "start_time": 144720,
+          "text": "认"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 145080,
+          "start_time": 144920,
+          "text": "出"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 145240,
+          "start_time": 145080,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 145440,
+          "start_time": 145240,
+          "text": "鬼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 145640,
+          "start_time": 145480,
+          "text": "差"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 145800,
+          "start_time": 145640,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 146040,
+          "start_time": 145800,
+          "text": "大"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 146480,
+          "start_time": 146040,
+          "text": "哥"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 148340,
+      "start_time": 146480,
+      "text": "用勾魂锁牵着",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 146760,
+          "start_time": 146480,
+          "text": "用"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 147000,
+          "start_time": 146800,
+          "text": "勾"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 147200,
+          "start_time": 147040,
+          "text": "魂"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 147440,
+          "start_time": 147240,
+          "text": "锁"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 147800,
+          "start_time": 147520,
+          "text": "牵"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 148340,
+          "start_time": 147840,
+          "text": "着"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 150860,
+      "start_time": 148360,
+      "text": "走在前往鬼门关的路上",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 148600,
+          "start_time": 148360,
+          "text": "走"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 148880,
+          "start_time": 148600,
+          "text": "在"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 149160,
+          "start_time": 148960,
+          "text": "前"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 149400,
+          "start_time": 149200,
+          "text": "往"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 149680,
+          "start_time": 149480,
+          "text": "鬼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 149880,
+          "start_time": 149720,
+          "text": "门"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 150040,
+          "start_time": 149880,
+          "text": "关"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 150160,
+          "start_time": 150040,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 150360,
+          "start_time": 150160,
+          "text": "路"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 150860,
+          "start_time": 150360,
+          "text": "上"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 153900,
+      "start_time": 151120,
+      "text": "看来我是在车祸中死了",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 151240,
+          "start_time": 151120,
+          "text": "看"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 151560,
+          "start_time": 151240,
+          "text": "来"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 152120,
+          "start_time": 151760,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 152240,
+          "start_time": 152120,
+          "text": "是"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 152440,
+          "start_time": 152240,
+          "text": "在"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 152600,
+          "start_time": 152440,
+          "text": "车"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 152760,
+          "start_time": 152600,
+          "text": "祸"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 152960,
+          "start_time": 152800,
+          "text": "中"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 153360,
+          "start_time": 153000,
+          "text": "死"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 153900,
+          "start_time": 153360,
+          "text": "了"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 155520,
+      "start_time": 154000,
+      "text": "唉真倒霉啊",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 154360,
+          "start_time": 154000,
+          "text": "唉"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 154720,
+          "start_time": 154480,
+          "text": "真"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 154960,
+          "start_time": 154760,
+          "text": "倒"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 155200,
+          "start_time": 155000,
+          "text": "霉"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 155520,
+          "start_time": 155200,
+          "text": "啊"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 157760,
+      "start_time": 155520,
+      "text": "我拼命卷了20多年",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 155800,
+          "start_time": 155520,
+          "text": "我"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 156080,
+          "start_time": 155800,
+          "text": "拼"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 156280,
+          "start_time": 156080,
+          "text": "命"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 156560,
+          "start_time": 156400,
+          "text": "卷"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 156760,
+          "start_time": 156560,
+          "text": "了"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 157280,
+          "start_time": 156760,
+          "text": "20"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 157440,
+          "start_time": 157280,
+          "text": "多"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 157760,
+          "start_time": 157440,
+          "text": "年"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 160020,
+      "start_time": 157760,
+      "text": "人生刚刚进入佳境",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 158080,
+          "start_time": 157760,
+          "text": "人"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 158320,
+          "start_time": 158080,
+          "text": "生"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 158440,
+          "start_time": 158400,
+          "text": "刚"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 158840,
+          "start_time": 158440,
+          "text": "刚"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 159120,
+          "start_time": 158920,
+          "text": "进"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 159280,
+          "start_time": 159120,
+          "text": "入"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 159600,
+          "start_time": 159320,
+          "text": "佳"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 160020,
+          "start_time": 159600,
+          "text": "境"
+        }
+      ]
+    },
+    {
+      "attribute": {
+        "event": "speech"
+      },
+      "end_time": 164140,
+      "start_time": 160080,
+      "text": "就因为一场莫名其妙的车祸结束了",
+      "words": [
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 160200,
+          "start_time": 160080,
+          "text": "就"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 160400,
+          "start_time": 160240,
+          "text": "因"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 160520,
+          "start_time": 160400,
+          "text": "为"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 160720,
+          "start_time": 160520,
+          "text": "一"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 160880,
+          "start_time": 160720,
+          "text": "场"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 161160,
+          "start_time": 160920,
+          "text": "莫"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 161360,
+          "start_time": 161160,
+          "text": "名"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 161760,
+          "start_time": 161440,
+          "text": "其"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 161920,
+          "start_time": 161760,
+          "text": "妙"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 162120,
+          "start_time": 161920,
+          "text": "的"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 162400,
+          "start_time": 162120,
+          "text": "车"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 162680,
+          "start_time": 162400,
+          "text": "祸"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 163360,
+          "start_time": 163120,
+          "text": "结"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 163600,
+          "start_time": 163400,
+          "text": "束"
+        },
+        {
+          "attribute": {
+            "event": "speech"
+          },
+          "end_time": 164140,
+          "start_time": 163600,
+          "text": "了"
+        }
+      ]
+    }
+  ]
+}

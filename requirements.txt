@@ -1,10 +1,11 @@
-# OCR
+# OCR (only needed for --engine ocr)
 paddleocr>=3.0.0,<4.0.0
-
-# Video / image processing
 opencv-python-headless>=4.8.0
 numpy>=1.24.0,<2.0.0
 Pillow>=10.0.0
+
+# ASR / translation (always needed)
+requests>=2.31.0
 
 # Utilities
 tqdm>=4.66.0

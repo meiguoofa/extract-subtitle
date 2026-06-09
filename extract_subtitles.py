@@ -30,8 +30,14 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Any, Iterable, List, Optional, Sequence, Tuple
 
-import cv2
-import numpy as np
+try:
+    import cv2  # type: ignore[import-not-found]
+    import numpy as np  # type: ignore[import-not-found]
+except ImportError:  # OCR deps optional when only using --engine asr
+    cv2 = None  # type: ignore[assignment]
+    np = None  # type: ignore[assignment]
+
+from pipeline.models import SubtitleCue  # canonical definition reused by ASR path
 
 
 DEFAULT_BANNED_WORDS = [
@@ -50,13 +56,6 @@ DEFAULT_BANNED_WORDS = [
     "www.",
     "http",
 ]
-
-
-@dataclass
-class SubtitleCue:
-    start: float
-    end: float
-    text: str
 
 
 @dataclass
@@ -512,52 +511,154 @@ def process_video(args: argparse.Namespace, video: Path, ocr: Optional[Any]) -> 
     print(f"[ocr] {video.name} -> {len(cues)} cues")
 
 
-def expand_inputs(patterns: Sequence[str]) -> list[Path]:
-    files: list[Path] = []
+def expand_inputs(patterns: Sequence[str]) -> list:
+    """Return a mix of Path objects (local files) and str URLs.
+
+    URLs (``http://`` / ``https://``) bypass glob and are returned as-is so
+    the ASR path can hand them directly to the vendor.
+    """
+    out: list = []
     for pattern in patterns:
+        if pattern.startswith(("http://", "https://")):
+            out.append(pattern)
+            continue
         matches = glob.glob(pattern)
         if matches:
-            files.extend(Path(m) for m in matches)
+            out.extend(Path(m) for m in matches)
         else:
-            files.append(Path(pattern))
-    return [p for p in files if p.exists() and p.is_file()]
+            out.append(Path(pattern))
+    return [p for p in out if isinstance(p, str) or (p.exists() and p.is_file())]
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Extract soft or hard subtitles from local videos.")
-    p.add_argument("inputs", nargs="+", help="Video paths or glob patterns, e.g. './videos/*.mp4'")
+    p = argparse.ArgumentParser(description="Extract soft or hard subtitles from local videos, or transcribe via ASR.")
+    p.add_argument("inputs", nargs="+", help="Video paths, glob patterns, or http(s) URLs (URL only for --engine asr)")
     p.add_argument("--out", default="./subtitles", help="Output directory")
-    p.add_argument("--force-ocr", action="store_true", help="Skip soft subtitle extraction and force OCR")
-    p.add_argument("--interval", type=float, default=0.5, help="Frame sampling interval in seconds")
-    p.add_argument("--roi", nargs=2, type=float, default=[0.55, 0.88], metavar=("Y1", "Y2"), help="Subtitle crop vertical range as ratios, default: 0.55 0.88")
-    p.add_argument("--x-margin", type=float, default=0.04, help="Left/right crop margin ratio")
-    p.add_argument("--lang", default="ch", help="PaddleOCR language code, default: ch")
-    p.add_argument("--min-score", type=float, default=0.35, help="Minimum OCR confidence")
-    p.add_argument("--min-chars", type=int, default=2, help="Minimum number of recognized chars")
-    p.add_argument("--sim-threshold", type=float, default=0.86, help="Similarity threshold for merging duplicate samples")
-    p.add_argument("--gap-tolerance", type=float, default=1.2, help="Allowed OCR-missing gap before closing a cue")
-    p.add_argument("--min-duration", type=float, default=0.6, help="Minimum cue duration")
-    p.add_argument("--max-duration", type=float, default=6.0, help="Maximum cue duration")
-    p.add_argument("--ban", nargs="*", default=DEFAULT_BANNED_WORDS, help="Words to exclude, useful for watermarks/disclaimers")
-    p.add_argument("--max-frames", type=int, default=None, help="Debug limit: OCR only first N sampled frames")
-    p.add_argument("--debug", action="store_true", help="Keep OCR frame crops in a temp folder while running")
+    p.add_argument("--engine", choices=["ocr", "asr"], default="ocr", help="Subtitle source: 'ocr' samples frames; 'asr' calls speech-to-text API")
+    p.add_argument("--force-ocr", action="store_true", help="(OCR engine) Skip soft subtitle extraction and force OCR")
+    p.add_argument("--interval", type=float, default=0.5, help="(OCR) Frame sampling interval in seconds")
+    p.add_argument("--roi", nargs=2, type=float, default=[0.55, 0.88], metavar=("Y1", "Y2"), help="(OCR) Subtitle crop vertical range as ratios")
+    p.add_argument("--x-margin", type=float, default=0.04, help="(OCR) Left/right crop margin ratio")
+    p.add_argument("--lang", default="ch", help="(OCR) PaddleOCR language code, default: ch")
+    p.add_argument("--min-score", type=float, default=0.35, help="(OCR) Minimum OCR confidence")
+    p.add_argument("--min-chars", type=int, default=2, help="(OCR) Minimum number of recognized chars")
+    p.add_argument("--sim-threshold", type=float, default=0.86, help="(OCR) Similarity threshold for merging duplicate samples")
+    p.add_argument("--gap-tolerance", type=float, default=1.2, help="(OCR) Allowed OCR-missing gap before closing a cue")
+    p.add_argument("--min-duration", type=float, default=0.6, help="(OCR) Minimum cue duration")
+    p.add_argument("--max-duration", type=float, default=6.0, help="Maximum cue duration (both engines)")
+    p.add_argument("--ban", nargs="*", default=DEFAULT_BANNED_WORDS, help="(OCR) Words to exclude")
+    p.add_argument("--max-frames", type=int, default=None, help="(OCR) Debug limit: OCR only first N sampled frames")
+    p.add_argument("--debug", action="store_true", help="Verbose output; for ASR also dumps raw query response JSON")
+
+    # ASR-specific
+    p.add_argument("--asr-vendor", choices=["volc", "ali"], default="volc", help="(ASR) Vendor: 'volc' (Doubao video captioning) or 'ali' (Aliyun NLS, not yet wired)")
+    p.add_argument("--source-lang", default="zh-CN", help="(ASR) Source language code, e.g. zh-CN, en-US, th-TH")
+    p.add_argument("--translate", action="store_true", help="Run machine translation after subtitle extraction")
+    p.add_argument("--target-lang", default="en", help="Translation target language code (default: en)")
+    p.add_argument("--volc-api-key", default=None, help="(ASR) Override VOLC_DOUBAO_API_KEY env var")
+    p.add_argument("--asr-poll-interval", type=float, default=3.0, help="(ASR) Query polling interval in seconds")
+    p.add_argument("--asr-poll-timeout", type=float, default=600.0, help="(ASR) Query polling deadline in seconds")
+    p.add_argument("--max-chars-per-cue", type=int, default=30, help="(ASR) Max characters per subtitle cue before splitting")
     return p
+
+
+def process_video_asr(args: argparse.Namespace, input_ref) -> None:
+    from pipeline.adapter import asr_result_to_cues
+    from pipeline.asr_factory import build_asr_client
+
+    is_url = isinstance(input_ref, str)
+    if is_url:
+        media_url = input_ref
+        stem = Path(media_url.split("?", 1)[0]).stem or "asr_output"
+    else:
+        # Local file: ASR vendors that accept URLs would still need an upload step.
+        # For Doubao vc/submit + a local file, we surface a clear error.
+        raise NotImplementedError(
+            f"--engine asr currently requires a public http(s) URL, got local file: {input_ref}. "
+            "Upload the media to TOS/OSS or pass a URL."
+        )
+
+    out_dir = Path(args.out)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    src_lang = args.source_lang
+    src_short = src_lang.split("-", 1)[0]
+    out_src_srt = out_dir / f"{stem}_{src_short}.srt"
+    out_src_vtt = out_dir / f"{stem}_{src_short}.vtt"
+    out_src_txt = out_dir / f"{stem}_{src_short}.txt"
+    out_raw = out_dir / f"{stem}_raw.json"
+
+    client = build_asr_client(
+        vendor=args.asr_vendor,
+        language=src_lang,
+        poll_interval=args.asr_poll_interval,
+        poll_timeout=args.asr_poll_timeout,
+        api_key_override=args.volc_api_key,
+    )
+
+    print(f"[asr:{args.asr_vendor}] submit {media_url}")
+    result = client.recognize(media_url, language=src_lang)
+    print(f"[asr:{args.asr_vendor}] duration={result.duration_sec:.1f}s utterances={len(result.utterances)}")
+
+    if args.debug:
+        out_raw.write_text(json.dumps(result.raw, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"[asr] raw response saved -> {out_raw.name}")
+
+    cues = asr_result_to_cues(
+        result,
+        max_chars_per_cue=args.max_chars_per_cue,
+        max_duration_sec=args.max_duration,
+    )
+    write_srt(cues, out_src_srt)
+    write_vtt(cues, out_src_vtt)
+    write_txt(cues, out_src_txt)
+    print(f"[asr] {stem} -> {len(cues)} cues, wrote {out_src_srt.name}")
+
+    if args.translate and cues:
+        from pipeline.translator_volc import VolcTranslator
+
+        tr_ak = os.environ.get("VOLC_TRANSLATE_AK")
+        tr_sk = os.environ.get("VOLC_TRANSLATE_SK")
+        if not (tr_ak and tr_sk):
+            print("[translate] skipped: VOLC_TRANSLATE_AK / VOLC_TRANSLATE_SK not set", file=sys.stderr)
+            return
+        translator = VolcTranslator(access_key=tr_ak, secret_key=tr_sk)
+        translated = translator.translate_cues(cues, target=args.target_lang, source=src_short)
+        out_tgt_srt = out_dir / f"{stem}_{args.target_lang}.srt"
+        out_tgt_vtt = out_dir / f"{stem}_{args.target_lang}.vtt"
+        out_tgt_txt = out_dir / f"{stem}_{args.target_lang}.txt"
+        write_srt(translated, out_tgt_srt)
+        write_vtt(translated, out_tgt_vtt)
+        write_txt(translated, out_tgt_txt)
+        print(f"[translate] wrote {out_tgt_srt.name}")
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     args = build_parser().parse_args(argv)
-    ensure_tools()
     files = expand_inputs(args.inputs)
     if not files:
         print("No input videos found.", file=sys.stderr)
         return 2
 
+    if args.engine == "asr":
+        for ref in files:
+            process_video_asr(args, ref)
+        return 0
+
+    ensure_tools()
+    if cv2 is None:
+        print("OCR engine requires opencv-python and numpy. Install requirements or use --engine asr.", file=sys.stderr)
+        return 2
+    local_files = [f for f in files if isinstance(f, Path)]
+    if not local_files:
+        print("OCR engine requires local video paths.", file=sys.stderr)
+        return 2
+
     # Reuse one OCR model across videos for speed. Soft-sub extraction still happens first per video.
     ocr = None
-    if args.force_ocr or any(not has_subtitle_stream(f) for f in files):
+    if args.force_ocr or any(not has_subtitle_stream(f) for f in local_files):
         ocr = init_paddleocr(args.lang)
 
-    for video in files:
+    for video in local_files:
         process_video(args, video, ocr)
     return 0
 
