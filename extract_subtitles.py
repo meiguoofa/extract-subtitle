@@ -551,7 +551,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--debug", action="store_true", help="Verbose output; for ASR also dumps raw query response JSON")
 
     # ASR-specific
-    p.add_argument("--asr-vendor", choices=["volc", "ali"], default="volc", help="(ASR) Vendor: 'volc' (Doubao video captioning) or 'ali' (Aliyun NLS, not yet wired)")
+    p.add_argument("--asr-vendor", choices=["volc", "volc-bigmodel", "ali"], default="volc", help="(ASR) 'volc' = Doubao 视频字幕一站式(收视频URL); 'volc-bigmodel' = SeedASR 大模型纯ASR(收音频URL); 'ali' = Aliyun NLS (placeholder)")
     p.add_argument("--source-lang", default="zh-CN", help="(ASR) Source language code, e.g. zh-CN, en-US, th-TH")
     p.add_argument("--translate", action="store_true", help="Run machine translation after subtitle extraction")
     p.add_argument("--target-lang", default="en", help="Translation target language code (default: en)")
@@ -559,6 +559,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--asr-poll-interval", type=float, default=3.0, help="(ASR) Query polling interval in seconds")
     p.add_argument("--asr-poll-timeout", type=float, default=600.0, help="(ASR) Query polling deadline in seconds")
     p.add_argument("--max-chars-per-cue", type=int, default=30, help="(ASR) Max characters per subtitle cue before splitting")
+    p.add_argument("--tos-bucket", default="duanju123123", help="(ASR volc-bigmodel) TOS bucket for staging audio")
+    p.add_argument("--tos-endpoint", default="tos-cn-shanghai.volces.com", help="(ASR volc-bigmodel) TOS endpoint")
+    p.add_argument("--tos-region", default="cn-shanghai", help="(ASR volc-bigmodel) TOS region")
+    p.add_argument("--keep-audio", action="store_true", help="(ASR volc-bigmodel) Keep the extracted local mp3 and TOS object after processing")
     return p
 
 
@@ -567,16 +571,38 @@ def process_video_asr(args: argparse.Namespace, input_ref) -> None:
     from pipeline.asr_factory import build_asr_client
 
     is_url = isinstance(input_ref, str)
+    vendor = args.asr_vendor
+    audio_tmp: Path | None = None
+    tos_object_key: str | None = None
+    tos_client = None
+
     if is_url:
         media_url = input_ref
         stem = Path(media_url.split("?", 1)[0]).stem or "asr_output"
     else:
-        # Local file: ASR vendors that accept URLs would still need an upload step.
-        # For Doubao vc/submit + a local file, we surface a clear error.
-        raise NotImplementedError(
-            f"--engine asr currently requires a public http(s) URL, got local file: {input_ref}. "
-            "Upload the media to TOS/OSS or pass a URL."
+        # Local file path
+        if vendor != "volc-bigmodel":
+            raise NotImplementedError(
+                f"--asr-vendor {vendor} requires a public http(s) URL, got local file: {input_ref}. "
+                "Use --asr-vendor volc-bigmodel to auto-extract audio + upload to TOS, or pass a URL."
+            )
+        stem = input_ref.stem
+        # 1) extract audio
+        from pipeline.audio import AudioExtractor
+        from pipeline.tos_uploader import TosUploader
+        audio_dir = Path(args.out) / "_audio_tmp"
+        audio_tmp = audio_dir / f"{stem}.mp3"
+        print(f"[audio] extract {input_ref.name} -> {audio_tmp.name}")
+        AudioExtractor().extract(input_ref, audio_tmp)
+        # 2) upload to TOS
+        tos_client = TosUploader.from_env(
+            endpoint=args.tos_endpoint,
+            region=args.tos_region,
+            bucket=args.tos_bucket,
         )
+        print(f"[tos] upload to bucket={args.tos_bucket}")
+        media_url, tos_object_key = tos_client.upload(audio_tmp, ttl_sec=3600)
+        print(f"[tos] object_key={tos_object_key}")
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -588,16 +614,28 @@ def process_video_asr(args: argparse.Namespace, input_ref) -> None:
     out_raw = out_dir / f"{stem}_raw.json"
 
     client = build_asr_client(
-        vendor=args.asr_vendor,
+        vendor=vendor,
         language=src_lang,
         poll_interval=args.asr_poll_interval,
         poll_timeout=args.asr_poll_timeout,
         api_key_override=args.volc_api_key,
     )
 
-    print(f"[asr:{args.asr_vendor}] submit {media_url}")
-    result = client.recognize(media_url, language=src_lang)
-    print(f"[asr:{args.asr_vendor}] duration={result.duration_sec:.1f}s utterances={len(result.utterances)}")
+    print(f"[asr:{vendor}] submit {media_url}")
+    try:
+        result = client.recognize(media_url, language=src_lang)
+    finally:
+        # cleanup TOS + local audio (best-effort) unless --keep-audio
+        if not args.keep_audio:
+            if tos_client and tos_object_key:
+                tos_client.delete(tos_object_key)
+            if audio_tmp and audio_tmp.exists():
+                try:
+                    audio_tmp.unlink()
+                    audio_tmp.parent.rmdir()
+                except OSError:
+                    pass
+    print(f"[asr:{vendor}] duration={result.duration_sec:.1f}s utterances={len(result.utterances)}")
 
     if args.debug:
         out_raw.write_text(json.dumps(result.raw, ensure_ascii=False, indent=2), encoding="utf-8")

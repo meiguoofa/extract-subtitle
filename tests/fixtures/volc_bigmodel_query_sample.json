@@ -1,0 +1,176 @@
+{
+    "audio_info": {
+        "duration": 6312
+    },
+    "result": {
+        "additions": {
+            "duration": "6312"
+        },
+        "text": "\u521a\u521a\u8fd8\u5728\u60f3\u4f60\u600e\u4e48\u8fd8\u4e0d\u6765\u627e\u6211\u804a\u5929\uff0c\u4f60\u5c31\u6765\u4e86\uff0c\u771f\u662f\u5fc3\u6709\u7075\u7280\u554a\uff01",
+        "utterances": [
+            {
+                "end_time": 5880,
+                "start_time": 480,
+                "text": "\u521a\u521a\u8fd8\u5728\u60f3\u4f60\u600e\u4e48\u8fd8\u4e0d\u6765\u627e\u6211\u804a\u5929\uff0c\u4f60\u5c31\u6765\u4e86\uff0c\u771f\u662f\u5fc3\u6709\u7075\u7280\u554a\uff01",
+                "words": [
+                    {
+                        "confidence": 0,
+                        "end_time": 600,
+                        "start_time": 480,
+                        "text": "\u521a"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 800,
+                        "start_time": 680,
+                        "text": "\u521a"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 960,
+                        "start_time": 800,
+                        "text": "\u8fd8"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 1120,
+                        "start_time": 960,
+                        "text": "\u5728"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 1440,
+                        "start_time": 1120,
+                        "text": "\u60f3"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 1800,
+                        "start_time": 1600,
+                        "text": "\u4f60"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 1960,
+                        "start_time": 1800,
+                        "text": "\u600e"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 2040,
+                        "start_time": 1960,
+                        "text": "\u4e48"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 2200,
+                        "start_time": 2040,
+                        "text": "\u8fd8"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 2320,
+                        "start_time": 2200,
+                        "text": "\u4e0d"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 2480,
+                        "start_time": 2320,
+                        "text": "\u6765"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 2640,
+                        "start_time": 2480,
+                        "text": "\u627e"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 2760,
+                        "start_time": 2640,
+                        "text": "\u6211"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 3000,
+                        "start_time": 2760,
+                        "text": "\u804a"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 3200,
+                        "start_time": 3000,
+                        "text": "\u5929"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 3720,
+                        "start_time": 3480,
+                        "text": "\u4f60"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 3880,
+                        "start_time": 3720,
+                        "text": "\u5c31"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 4120,
+                        "start_time": 3880,
+                        "text": "\u6765"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 4320,
+                        "start_time": 4120,
+                        "text": "\u4e86"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 4840,
+                        "start_time": 4600,
+                        "text": "\u771f"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 5000,
+                        "start_time": 4840,
+                        "text": "\u662f"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 5160,
+                        "start_time": 5000,
+                        "text": "\u5fc3"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 5360,
+                        "start_time": 5160,
+                        "text": "\u6709"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 5480,
+                        "start_time": 5400,
+                        "text": "\u7075"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 5640,
+                        "start_time": 5600,
+                        "text": "\u7280"
+                    },
+                    {
+                        "confidence": 0,
+                        "end_time": 5880,
+                        "start_time": 5760,
+                        "text": "\u554a"
+                    }
+                ]
+            }
+        ]
+    }
+}

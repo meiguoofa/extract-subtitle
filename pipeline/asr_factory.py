@@ -6,6 +6,7 @@ import os
 from .asr_ali import AliNLSASRClient
 from .asr_base import ASRClient
 from .asr_volc import VolcDoubaoVCClient
+from .asr_volc_bigmodel import VolcBigModelASRClient
 
 
 def build_asr_client(
@@ -16,7 +17,7 @@ def build_asr_client(
     api_key_override: str | None = None,
 ) -> ASRClient:
     vendor = (vendor or "").lower()
-    if vendor in ("volc", "doubao", "volcengine"):
+    if vendor in ("volc", "volc-vc", "doubao-vc", "volcengine"):
         api_key = api_key_override or os.environ.get("VOLC_DOUBAO_API_KEY")
         if not api_key:
             raise RuntimeError(
@@ -30,6 +31,19 @@ def build_asr_client(
         if poll_timeout is not None:
             kwargs["poll_timeout"] = poll_timeout
         return VolcDoubaoVCClient(**kwargs)
+
+    if vendor in ("volc-bigmodel", "bigmodel", "seedasr", "doubao"):
+        api_key = api_key_override or os.environ.get("VOLC_DOUBAO_API_KEY")
+        if not api_key:
+            raise RuntimeError(
+                "VOLC_DOUBAO_API_KEY is required (env var or --volc-api-key)"
+            )
+        kwargs = {"api_key": api_key}
+        if poll_interval is not None:
+            kwargs["poll_interval"] = poll_interval
+        if poll_timeout is not None:
+            kwargs["poll_timeout"] = poll_timeout
+        return VolcBigModelASRClient(**kwargs)
 
     if vendor in ("ali", "aliyun", "alibaba"):
         ak = os.environ.get("ALI_ACCESS_KEY_ID")
@@ -47,4 +61,4 @@ def build_asr_client(
             poll_timeout=poll_timeout or 600.0,
         )
 
-    raise ValueError(f"Unknown ASR vendor: {vendor!r}. Choose 'volc' or 'ali'.")
+    raise ValueError(f"Unknown ASR vendor: {vendor!r}. Choose 'volc', 'volc-bigmodel' or 'ali'.")

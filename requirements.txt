@@ -7,6 +7,9 @@ Pillow>=10.0.0
 # ASR / translation (always needed)
 requests>=2.31.0
 
+# TOS object storage (needed for --asr-vendor volc-bigmodel with local files)
+tos>=2.7.0
+
 # Utilities
 tqdm>=4.66.0
 rapidfuzz>=3.6.0

@@ -4,3 +4,5 @@ __pycache__/
 wget-log
 .env
 subtitles_asr/
+subtitles_bigmodel/
+test_videos/
