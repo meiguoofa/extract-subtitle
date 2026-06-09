@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import os
 
-from .asr_ali import AliNLSASRClient
+from .asr_ali import AliFlashASRClient
 from .asr_base import ASRClient
 from .asr_volc import VolcDoubaoVCClient
 from .asr_volc_bigmodel import VolcBigModelASRClient
@@ -48,17 +48,22 @@ def build_asr_client(
     if vendor in ("ali", "aliyun", "alibaba"):
         ak = os.environ.get("ALI_ACCESS_KEY_ID")
         sk = os.environ.get("ALI_ACCESS_KEY_SECRET")
-        app_key = os.environ.get("ALI_APP_KEY")
-        if not (ak and sk and app_key):
+        if not (ak and sk):
             raise RuntimeError(
-                "Aliyun NLS needs ALI_ACCESS_KEY_ID / ALI_ACCESS_KEY_SECRET / ALI_APP_KEY"
+                "Aliyun NLS needs ALI_ACCESS_KEY_ID / ALI_ACCESS_KEY_SECRET"
             )
-        return AliNLSASRClient(
+        # Build language→appkey map from env
+        language_appkeys: dict[str, str] = {}
+        for key, val in os.environ.items():
+            if key.startswith("ALI_APP_KEY_"):
+                lang = key[len("ALI_APP_KEY_"):].lower().replace("_", "-")
+                language_appkeys[lang] = val
+        default_appkey = os.environ.get("ALI_APP_KEY")
+        return AliFlashASRClient(
             access_key_id=ak,
             access_key_secret=sk,
-            app_key=app_key,
-            poll_interval=poll_interval or 3.0,
-            poll_timeout=poll_timeout or 600.0,
+            app_key=default_appkey,
+            language_appkeys=language_appkeys if language_appkeys else None,
         )
 
     raise ValueError(f"Unknown ASR vendor: {vendor!r}. Choose 'volc', 'volc-bigmodel' or 'ali'.")

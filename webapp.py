@@ -77,32 +77,32 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
     tos_client = None
 
     try:
-        if asr_vendor != "volc-bigmodel":
-            raise NotImplementedError(
-                f"Web 端暂仅支持 volc-bigmodel（需上传视频→抽音频），当前: {asr_vendor}"
-            )
-
-        # 1) extract audio
+        # 1) extract audio (all vendors need this for local uploads)
         _emit(job, "audio_extract", "正在从视频中提取音频...", 10)
         from pipeline.audio import AudioExtractor
         audio_dir = job.job_dir / "_audio_tmp"
         audio_tmp = audio_dir / f"{stem}.mp3"
         AudioExtractor().extract(video_path, audio_tmp)
 
-        # 2) upload to TOS
-        _emit(job, "tos_upload", "正在上传音频到云存储...", 25)
-        from pipeline.tos_uploader import TosUploader
-        tos_client = TosUploader.from_env()
-        media_url, tos_object_key = tos_client.upload(audio_tmp, ttl_sec=3600)
+        if asr_vendor == "ali":
+            # Ali FlashRecognizer: upload audio binary directly, no TOS needed
+            _emit(job, "asr_submit", "正在提交语音识别请求...", 35)
+            client = build_asr_client(vendor=asr_vendor, language=source_lang)
+            _emit(job, "asr_poll", "等待语音识别结果...", 40)
+            # Pass local audio path; AliFlashASRClient reads and POSTs it directly
+            result = client.recognize(str(audio_tmp), language=source_lang)
+        else:
+            # volc-bigmodel: upload to TOS, then submit URL
+            _emit(job, "tos_upload", "正在上传音频到云存储...", 25)
+            from pipeline.tos_uploader import TosUploader
+            tos_client = TosUploader.from_env()
+            media_url, tos_object_key = tos_client.upload(audio_tmp, ttl_sec=3600)
 
-        # 3) submit ASR
-        _emit(job, "asr_submit", "正在提交语音识别请求...", 35)
-        client = build_asr_client(vendor=asr_vendor, language=source_lang)
+            _emit(job, "asr_submit", "正在提交语音识别请求...", 35)
+            client = build_asr_client(vendor=asr_vendor, language=source_lang)
+            _emit(job, "asr_poll", "等待语音识别结果...", 40)
+            result = client.recognize(media_url, language=source_lang)
 
-        # 4) poll ASR (client.recognize is blocking)
-        _emit(job, "asr_poll", "等待语音识别结果...", 40)
-
-        result = client.recognize(media_url, language=source_lang)
         _emit(job, "asr_done",
               f"语音识别完成：{result.duration_sec:.0f}秒，{len(result.utterances)}段",
               75)
@@ -218,7 +218,7 @@ async def create_job(
     target_lang: str = Form("en"),
     translate: str = Form("false"),
 ):
-    if asr_vendor not in ("volc", "volc-bigmodel"):
+    if asr_vendor not in ("volc", "volc-bigmodel", "ali"):
         raise HTTPException(422, f"不支持的 ASR 引擎: {asr_vendor}")
 
     job_id = uuid.uuid4().hex[:12]
