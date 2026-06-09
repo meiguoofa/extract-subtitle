@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>字幕提取工具</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .drop-zone { transition: border-color .2s, background .2s; }
+  .drop-zone.dragover { border-color: #3b82f6; background: #eff6ff; }
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<div class="max-w-2xl mx-auto py-10 px-4">
+
+  <h1 class="text-2xl font-bold text-gray-800 mb-6">字幕提取工具</h1>
+
+  <!-- 上传区 -->
+  <div id="dropZone" class="drop-zone border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-blue-400 mb-6">
+    <input type="file" id="fileInput" accept="video/*" class="hidden">
+    <div id="dropText">
+      <p class="text-gray-500 text-lg">拖拽视频到此处</p>
+      <p class="text-gray-400 text-sm mt-1">或点击选择文件</p>
+    </div>
+    <div id="fileInfo" class="hidden">
+      <p class="text-gray-700 font-medium" id="fileName"></p>
+      <p class="text-gray-400 text-sm" id="fileSize"></p>
+    </div>
+  </div>
+
+  <!-- 选项 -->
+  <div class="bg-white rounded-lg shadow-sm border p-5 mb-6 space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">视频语言</label>
+        <select id="sourceLang" class="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="zh-CN">中文</option>
+          <option value="en-US">英语</option>
+          <option value="ja-JP">日语</option>
+          <option value="ko-KR">韩语</option>
+          <option value="th-TH">泰语</option>
+          <option value="ar-SA">阿拉伯语</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">ASR 引擎</label>
+        <select id="asrVendor" class="w-full border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="volc-bigmodel">豆包大模型 (推荐)</option>
+          <option value="volc">豆包视频字幕</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <label class="flex items-center gap-2 cursor-pointer">
+        <input type="checkbox" id="translateCheck" checked class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+        <span class="text-sm font-medium text-gray-700">翻译字幕</span>
+      </label>
+      <div id="targetLangGroup">
+        <label class="block text-sm font-medium text-gray-700 mb-1">目标语言</label>
+        <select id="targetLang" class="border rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="en">英语</option>
+          <option value="zh">中文</option>
+          <option value="ja">日语</option>
+          <option value="ko">韩语</option>
+          <option value="th">泰语</option>
+          <option value="ar">阿拉伯语</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- 提交按钮 -->
+  <button id="submitBtn" disabled
+    class="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors mb-6">
+    开始提取
+  </button>
+
+  <!-- 进度 -->
+  <div id="progressSection" class="hidden bg-white rounded-lg shadow-sm border p-5 mb-6">
+    <div class="flex items-center justify-between mb-2">
+      <span class="text-sm font-medium text-gray-700" id="progressStage">准备中...</span>
+      <span class="text-sm text-gray-500" id="progressPercent">0%</span>
+    </div>
+    <div class="w-full bg-gray-200 rounded-full h-3">
+      <div id="progressBar" class="bg-blue-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- 下载 -->
+  <div id="resultSection" class="hidden bg-white rounded-lg shadow-sm border p-5 mb-6">
+    <h2 class="text-lg font-medium text-gray-800 mb-4">下载字幕</h2>
+    <div id="sourceResults" class="mb-3">
+      <p class="text-sm text-gray-500 mb-2">原文字幕</p>
+      <div class="flex gap-2" id="sourceDownloads"></div>
+    </div>
+    <div id="translatedResults" class="hidden">
+      <p class="text-sm text-gray-500 mb-2">译文字幕</p>
+      <div class="flex gap-2" id="translatedDownloads"></div>
+    </div>
+  </div>
+
+  <!-- 错误 -->
+  <div id="errorSection" class="hidden bg-red-50 border border-red-200 rounded-lg p-5 mb-6">
+    <p class="text-red-700 text-sm" id="errorMessage"></p>
+  </div>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+let selectedFile = null;
+
+// --- 文件选择 ---
+const dropZone = $('dropZone');
+const fileInput = $('fileInput');
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', () => { if (fileInput.files.length) handleFile(fileInput.files[0]); });
+
+function handleFile(file) {
+  if (!file.type.startsWith('video/')) { alert('请选择视频文件'); return; }
+  selectedFile = file;
+  $('dropText').classList.add('hidden');
+  $('fileInfo').classList.remove('hidden');
+  $('fileName').textContent = file.name;
+  $('fileSize').textContent = formatSize(file.size);
+  $('submitBtn').disabled = false;
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(1) + ' MB';
+}
+
+// --- 翻译选项联动 ---
+$('translateCheck').addEventListener('change', () => {
+  $('targetLangGroup').style.display = $('translateCheck').checked ? '' : 'none';
+});
+
+// --- 提交 ---
+$('submitBtn').addEventListener('click', startJob);
+
+async function startJob() {
+  if (!selectedFile) return;
+
+  const form = new FormData();
+  form.append('video', selectedFile);
+  form.append('asr_vendor', $('asrVendor').value);
+  form.append('source_lang', $('sourceLang').value);
+  form.append('target_lang', $('targetLang').value);
+  form.append('translate', $('translateCheck').checked ? 'true' : 'false');
+
+  $('submitBtn').disabled = true;
+  $('progressSection').classList.remove('hidden');
+  $('resultSection').classList.add('hidden');
+  $('errorSection').classList.add('hidden');
+  updateProgress(0, '上传视频中...');
+
+  try {
+    const res = await fetch('/api/jobs', { method: 'POST', body: form });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || '上传失败');
+    }
+    const { job_id } = await res.json();
+    openProgressStream(job_id);
+  } catch (e) {
+    showError(e.message);
+    $('submitBtn').disabled = false;
+  }
+}
+
+// --- SSE 进度 ---
+function openProgressStream(jobId) {
+  let replayed = false;
+  const es = new EventSource(`/api/jobs/${jobId}/events`);
+
+  es.addEventListener('progress', e => {
+    const d = JSON.parse(e.data);
+    updateProgress(d.percent, d.message);
+  });
+
+  es.addEventListener('complete', e => {
+    es.close();
+    const d = JSON.parse(e.data);
+    updateProgress(100, '完成');
+    showResults(jobId, d.files || {});
+    $('submitBtn').disabled = false;
+  });
+
+  es.addEventListener('error', e => {
+    // SSE error event — could be connection or custom
+    if (es.readyState === EventSource.CLOSED) return;
+    // Try to parse custom error data
+    const data = e.data ? JSON.parse(e.data) : null;
+    es.close();
+    showError(data ? data.error : '处理出错，请重试');
+    $('submitBtn').disabled = false;
+  });
+
+  es.onerror = () => {
+    if (es.readyState === EventSource.CLOSED) return;
+    // Fallback to polling
+    es.close();
+    pollStatus(jobId);
+  };
+}
+
+// --- 轮询备用 ---
+function pollStatus(jobId) {
+  const interval = setInterval(async () => {
+    try {
+      const res = await fetch(`/api/jobs/${jobId}/status`);
+      const d = await res.json();
+      updateProgress(d.percent, d.message);
+      if (d.status === 'complete') {
+        clearInterval(interval);
+        showResults(jobId, d.files || {});
+        $('submitBtn').disabled = false;
+      } else if (d.status === 'error') {
+        clearInterval(interval);
+        showError(d.error || '处理出错');
+        $('submitBtn').disabled = false;
+      }
+    } catch { clearInterval(interval); }
+  }, 2000);
+}
+
+// --- UI 更新 ---
+function updateProgress(percent, message) {
+  $('progressBar').style.width = percent + '%';
+  $('progressPercent').textContent = percent + '%';
+  $('progressStage').textContent = message;
+}
+
+function showResults(jobId, files) {
+  $('progressSection').classList.add('hidden');
+  $('resultSection').classList.remove('hidden');
+
+  const srcDiv = $('sourceDownloads');
+  srcDiv.innerHTML = '';
+  for (const fmt of ['srt', 'vtt', 'txt']) {
+    if (files[fmt]) srcDiv.appendChild(dlBtn(jobId, fmt, fmt.toUpperCase()));
+  }
+
+  const hasTranslated = ['translated_srt','translated_vtt','translated_txt'].some(k => files[k]);
+  if (hasTranslated) {
+    $('translatedResults').classList.remove('hidden');
+    const trDiv = $('translatedDownloads');
+    trDiv.innerHTML = '';
+    if (files.translated_srt) trDiv.appendChild(dlBtn(jobId, 'translated_srt', 'SRT'));
+    if (files.translated_vtt) trDiv.appendChild(dlBtn(jobId, 'translated_vtt', 'VTT'));
+    if (files.translated_txt) trDiv.appendChild(dlBtn(jobId, 'translated_txt', 'TXT'));
+  } else {
+    $('translatedResults').classList.add('hidden');
+  }
+}
+
+function dlBtn(jobId, fmt, label) {
+  const a = document.createElement('a');
+  a.href = `/api/jobs/${jobId}/download/${fmt}`;
+  a.textContent = label;
+  a.className = 'inline-block px-4 py-2 bg-blue-50 text-blue-700 rounded-md text-sm font-medium hover:bg-blue-100 transition-colors';
+  return a;
+}
+
+function showError(msg) {
+  $('errorSection').classList.remove('hidden');
+  $('errorMessage').textContent = msg;
+}
+</script>
+</body>
+</html>

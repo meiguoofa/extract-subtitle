@@ -13,3 +13,9 @@ tos>=2.7.0
 # Utilities
 tqdm>=4.66.0
 rapidfuzz>=3.6.0
+
+# Web frontend (needed for webapp.py)
+fastapi>=0.115.0
+uvicorn>=0.30.0
+python-multipart>=0.0.6
+sse-starlette>=1.0.0
