@@ -399,6 +399,40 @@ async def download_result(job_id: str, fmt: str):
     raise HTTPException(404, "文件不存在")
 
 
+@app.get("/api/jobs/{job_id}/content/{fmt}")
+async def subtitle_content(job_id: str, fmt: str):
+    if fmt not in FMT_MAP:
+        raise HTTPException(422, f"不支持的格式: {fmt}")
+
+    # Running job: read from local file
+    job = jobs.get(job_id)
+    if job and job.file_paths.get(fmt):
+        p = Path(job.file_paths[fmt])
+        if p.exists():
+            return {"content": p.read_text("utf-8")}
+
+    # Completed job: fetch from TOS
+    files = await get_job_files(_db, job_id)
+    file_row = next((f for f in files if f["format"] == fmt), None)
+    if file_row:
+        import httpx
+        from pipeline.tos_uploader import TosUploader
+        import tos as _tos
+        uploader = TosUploader.from_env()
+        signed = uploader.client.pre_signed_url(
+            _tos.HttpMethodType.Http_Method_Get,
+            uploader.bucket,
+            file_row["tos_key"],
+            expires=600,
+        )
+        async with httpx.AsyncClient(timeout=30) as client:
+            resp = await client.get(signed.signed_url)
+            resp.raise_for_status()
+            return {"content": resp.text}
+
+    raise HTTPException(404, "文件不存在")
+
+
 # ---------------------------------------------------------------------------
 # Periodic cleanup
 # ---------------------------------------------------------------------------
