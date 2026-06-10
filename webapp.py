@@ -10,30 +10,46 @@ import time
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
 
+import aiosqlite
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
+
+from pipeline.db import (
+    init_db, insert_job, update_job_progress, complete_job, fail_job,
+    mark_interrupted_jobs, list_jobs, get_job, get_job_files, count_jobs,
+    cleanup_old_jobs,
+)
 
 # ---------------------------------------------------------------------------
-# Job model
+# Job model (in-memory, for real-time SSE progress of running jobs)
 # ---------------------------------------------------------------------------
 
 JOBS_DIR = Path("/tmp/subtitle_jobs")
-MAX_UPLOAD_BYTES = 500 * 1024 * 1024  # 500 MB
-JOB_TTL_SEC = 2 * 3600  # 2 hours
+MAX_UPLOAD_BYTES = 500 * 1024 * 1024
+JOB_TTL_SEC = 2 * 3600
+DB_PATH = Path(__file__).parent / "data" / "subtitles.db"
+
+FMT_MAP = {
+    "srt": ("source", ".srt"),
+    "vtt": ("source", ".vtt"),
+    "txt": ("source", ".txt"),
+    "translated_srt": ("translated", ".srt"),
+    "translated_vtt": ("translated", ".vtt"),
+    "translated_txt": ("translated", ".txt"),
+}
 
 
 @dataclass
 class Job:
     job_id: str
-    status: str = "queued"          # queued → processing → complete | error
+    status: str = "queued"
     stage: str = ""
     message: str = ""
     percent: int = 0
     error: str | None = None
-    files: dict = field(default_factory=dict)       # fmt -> bool (for SSE/frontend)
-    file_paths: dict = field(default_factory=dict)  # fmt -> str path (for download)
+    files: dict = field(default_factory=dict)
+    file_paths: dict = field(default_factory=dict)
     events: list[dict] = field(default_factory=list)
     event_flag: threading.Event = field(default_factory=threading.Event)
     job_dir: Path = field(default_factory=Path)
@@ -41,6 +57,7 @@ class Job:
 
 jobs: dict[str, Job] = {}
 _loop: asyncio.AbstractEventLoop | None = None
+_db: aiosqlite.Connection | None = None
 
 
 def _emit(job: Job, stage: str, message: str, percent: int,
@@ -50,15 +67,21 @@ def _emit(job: Job, stage: str, message: str, percent: int,
     job.percent = percent
     data: dict = {"stage": stage, "message": message, "percent": percent, **extra}
     job.events.append({"event": event_type, "data": data})
-    # Wake SSE waiters (thread-safe)
     if _loop is not None and _loop.is_running():
         _loop.call_soon_threadsafe(job.event_flag.set)
     else:
         job.event_flag.set()
 
 
+def _db_update(job_id: str, **kwargs) -> None:
+    if _loop and _db:
+        async def _do():
+            await update_job_progress(_db, job_id, **kwargs)
+        _loop.call_soon_threadsafe(lambda: asyncio.ensure_future(_do()))
+
+
 # ---------------------------------------------------------------------------
-# Pipeline wrapper — mirrors process_video_asr() with _emit() instead of print()
+# Pipeline wrapper
 # ---------------------------------------------------------------------------
 
 def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
@@ -68,6 +91,8 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
     from extract_subtitles import write_srt, write_vtt, write_txt
 
     job.status = "processing"
+    _db_update(job.job_id, status="processing", stage="audio_extract",
+               message="正在从视频中提取音频...", percent=10)
     video_path = list((job.job_dir / "input").iterdir())[0]
     stem = video_path.stem
     src_short = source_lang.split("-", 1)[0]
@@ -77,7 +102,7 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
     tos_client = None
 
     try:
-        # 1) extract audio (all vendors need this for local uploads)
+        # 1) extract audio
         _emit(job, "audio_extract", "正在从视频中提取音频...", 10)
         from pipeline.audio import AudioExtractor
         audio_dir = job.job_dir / "_audio_tmp"
@@ -85,14 +110,12 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
         AudioExtractor().extract(video_path, audio_tmp)
 
         if asr_vendor == "ali":
-            # Ali FlashRecognizer: upload audio binary directly, no TOS needed
             _emit(job, "asr_submit", "正在提交语音识别请求...", 35)
+            _db_update(job.job_id, stage="asr_submit", message="正在提交语音识别请求...", percent=35)
             client = build_asr_client(vendor=asr_vendor, language=source_lang)
             _emit(job, "asr_poll", "等待语音识别结果...", 40)
-            # Pass local audio path; AliFlashASRClient reads and POSTs it directly
             result = client.recognize(str(audio_tmp), language=source_lang)
         else:
-            # volc-bigmodel: upload to TOS, then submit URL
             _emit(job, "tos_upload", "正在上传音频到云存储...", 25)
             from pipeline.tos_uploader import TosUploader
             tos_client = TosUploader.from_env()
@@ -106,9 +129,10 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
         _emit(job, "asr_done",
               f"语音识别完成：{result.duration_sec:.0f}秒，{len(result.utterances)}段",
               75)
+        _db_update(job.job_id, stage="asr_done", percent=75,
+                   message=f"语音识别完成：{result.duration_sec:.0f}秒")
 
     except Exception as exc:
-        # Cleanup on failure
         if tos_client and tos_object_key:
             try: tos_client.delete(tos_object_key)
             except Exception: pass
@@ -118,9 +142,14 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
         _emit(job, "error", f"处理失败: {exc}", 0, event_type="error", error=str(exc))
         job.status = "error"
         job.error = str(exc)
+        _db_update(job.job_id, status="error", error=str(exc), stage="error")
+        if _db:
+            async def _fail():
+                await fail_job(_db, job.job_id, str(exc))
+            _loop.call_soon_threadsafe(lambda: asyncio.ensure_future(_fail()))
         return
 
-    # Cleanup TOS + local audio
+    # Cleanup TOS audio + local audio
     if tos_client and tos_object_key:
         try: tos_client.delete(tos_object_key)
         except Exception: pass
@@ -176,7 +205,31 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
         except Exception as exc:
             _emit(job, "translate", f"翻译失败: {exc}", 85)
 
-    # Done
+    # 7) Upload subtitle files to TOS for persistent storage
+    _emit(job, "saving", "正在保存字幕文件...", 95)
+    file_uploads: list[tuple[str, str]] = []
+    try:
+        from pipeline.tos_uploader import TosUploader
+        import tos as _tos
+        sub_uploader = TosUploader.from_env(key_prefix="subtitles/")
+        for fmt, path_str in job.file_paths.items():
+            local_path = Path(path_str)
+            if local_path.exists():
+                _, tos_key = sub_uploader.upload(local_path)
+                file_uploads.append((fmt, tos_key))
+    except Exception:
+        pass  # Best-effort TOS upload; local files still available
+
+    # 8) Record to DB, then emit done
+    if _db and file_uploads:
+        async def _finalize():
+            await complete_job(_db, job.job_id, file_uploads)
+        _loop.call_soon_threadsafe(lambda: asyncio.ensure_future(_finalize()))
+    elif _db and not file_uploads:
+        async def _finalize():
+            await complete_job(_db, job.job_id, [])
+        _loop.call_soon_threadsafe(lambda: asyncio.ensure_future(_finalize()))
+
     _emit(job, "done", "完成", 100, event_type="complete", files=job.files)
     job.status = "complete"
 
@@ -187,21 +240,15 @@ def _run_pipeline(job: Job, asr_vendor: str, source_lang: str,
 
 app = FastAPI(title="字幕提取工具")
 
-FMT_MAP = {
-    "srt": ("source", ".srt"),
-    "vtt": ("source", ".vtt"),
-    "txt": ("source", ".txt"),
-    "translated_srt": ("translated", ".srt"),
-    "translated_vtt": ("translated", ".vtt"),
-    "translated_txt": ("translated", ".txt"),
-}
-
 
 @app.on_event("startup")
 async def _startup():
-    global _loop
+    global _loop, _db
     _loop = asyncio.get_running_loop()
     JOBS_DIR.mkdir(parents=True, exist_ok=True)
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    _db = await init_db(DB_PATH)
+    await mark_interrupted_jobs(_db)
 
 
 @app.get("/")
@@ -226,7 +273,6 @@ async def create_job(
     input_dir = job_dir / "input"
     input_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save uploaded file
     dest = input_dir / (video.filename or "video.mp4")
     size = 0
     with dest.open("wb") as f:
@@ -245,6 +291,13 @@ async def create_job(
 
     do_translate = translate.lower() in ("true", "1", "yes")
 
+    # Insert to DB
+    await insert_job(
+        _db, id=job_id, video_filename=video.filename or "video.mp4",
+        video_size=size, asr_vendor=asr_vendor, source_lang=source_lang,
+        target_lang=target_lang, translate=do_translate,
+    )
+
     t = threading.Thread(
         target=_run_pipeline,
         args=(job, asr_vendor, source_lang, target_lang, do_translate),
@@ -255,20 +308,38 @@ async def create_job(
     return {"job_id": job_id, "status": "queued"}
 
 
+# ---------------------------------------------------------------------------
+# History API
+# ---------------------------------------------------------------------------
+
+@app.get("/api/jobs")
+async def list_history(limit: int = 20, offset: int = 0):
+    items = await list_jobs(_db, limit=min(limit, 100), offset=offset)
+    total = await count_jobs(_db)
+    return {"items": items, "total": total}
+
+
 @app.get("/api/jobs/{job_id}/status")
 async def job_status(job_id: str):
+    # Running job from memory
     job = jobs.get(job_id)
-    if not job:
-        raise HTTPException(404, "任务不存在")
-    return {
-        "job_id": job.job_id,
-        "status": job.status,
-        "stage": job.stage,
-        "message": job.message,
-        "percent": job.percent,
-        "error": job.error,
-        "files": job.files,
-    }
+    if job:
+        return {
+            "job_id": job.job_id,
+            "status": job.status,
+            "stage": job.stage,
+            "message": job.message,
+            "percent": job.percent,
+            "error": job.error,
+            "files": job.files,
+        }
+    # Past job from DB
+    row = await get_job(_db, job_id)
+    if row:
+        files_rows = await get_job_files(_db, job_id)
+        row["files"] = {f["format"]: True for f in files_rows}
+        return row
+    raise HTTPException(404, "任务不存在")
 
 
 @app.get("/api/jobs/{job_id}/events")
@@ -278,20 +349,16 @@ async def job_events(job_id: str):
         raise HTTPException(404, "任务不存在")
 
     from sse_starlette.sse import EventSourceResponse
-    import json as _json
 
     async def event_generator():
         idx = 0
         while True:
-            # Yield buffered events
             while idx < len(job.events):
                 evt = job.events[idx]
                 idx += 1
-                yield {"event": evt["event"], "data": _json.dumps(evt["data"], ensure_ascii=False)}
-            # Terminal?
+                yield {"event": evt["event"], "data": json.dumps(evt["data"], ensure_ascii=False)}
             if job.status in ("complete", "error"):
                 return
-            # Wait for new events
             job.event_flag.clear()
             await asyncio.get_running_loop().run_in_executor(None, job.event_flag.wait, 2.0)
 
@@ -300,34 +367,36 @@ async def job_events(job_id: str):
 
 @app.get("/api/jobs/{job_id}/download/{fmt}")
 async def download_result(job_id: str, fmt: str):
-    job = jobs.get(job_id)
-    if not job:
-        raise HTTPException(404, "任务不存在")
-    if job.status != "complete":
-        raise HTTPException(404, "文件尚未就绪")
-
     if fmt not in FMT_MAP:
         raise HTTPException(422, f"不支持的格式: {fmt}")
 
-    file_path = job.file_paths.get(fmt)
-    if not file_path:
-        raise HTTPException(404, "文件不存在")
-    target_file = Path(file_path)
-    if not target_file.exists():
-        raise HTTPException(404, "文件不存在")
+    # Running job: serve from local temp dir
+    job = jobs.get(job_id)
+    if job and job.status == "processing":
+        file_path = job.file_paths.get(fmt)
+        if file_path and Path(file_path).exists():
+            _, ext = FMT_MAP[fmt]
+            media_type = "text/plain"
+            if ext == ".srt": media_type = "application/x-subrip"
+            elif ext == ".vtt": media_type = "text/vtt"
+            return FileResponse(Path(file_path), media_type=media_type, filename=Path(file_path).name)
 
-    kind, ext = FMT_MAP[fmt]
-    media_type = "text/plain"
-    if ext == ".srt":
-        media_type = "application/x-subrip"
-    elif ext == ".vtt":
-        media_type = "text/vtt"
+    # Completed job: serve from TOS via signed URL redirect
+    files = await get_job_files(_db, job_id)
+    file_row = next((f for f in files if f["format"] == fmt), None)
+    if file_row:
+        from pipeline.tos_uploader import TosUploader
+        import tos as _tos
+        uploader = TosUploader.from_env()
+        signed = uploader.client.pre_signed_url(
+            _tos.HttpMethodType.Http_Method_Get,
+            uploader.bucket,
+            file_row["tos_key"],
+            expires=3600,
+        )
+        return RedirectResponse(url=signed.signed_url)
 
-    return FileResponse(
-        target_file,
-        media_type=media_type,
-        filename=target_file.name,
-    )
+    raise HTTPException(404, "文件不存在")
 
 
 # ---------------------------------------------------------------------------
@@ -338,8 +407,9 @@ async def download_result(job_id: str, fmt: str):
 async def _start_cleanup():
     async def _cleanup_loop():
         while True:
-            await asyncio.sleep(1800)  # 30 min
+            await asyncio.sleep(1800)
             now = time.time()
+            # Clean up in-memory jobs and local temp dirs
             to_delete = [
                 jid for jid, j in jobs.items()
                 if now - j.job_dir.stat().st_mtime > JOB_TTL_SEC
@@ -348,4 +418,15 @@ async def _start_cleanup():
                 job = jobs.pop(jid, None)
                 if job:
                     shutil.rmtree(job.job_dir, ignore_errors=True)
+            # Clean up old DB records (>30 days) and their TOS objects
+            try:
+                tos_keys = await cleanup_old_jobs(_db, days=30)
+                if tos_keys:
+                    from pipeline.tos_uploader import TosUploader
+                    uploader = TosUploader.from_env()
+                    for key in tos_keys:
+                        try: uploader.delete(key)
+                        except Exception: pass
+            except Exception:
+                pass
     asyncio.create_task(_cleanup_loop())

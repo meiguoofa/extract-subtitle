@@ -6,3 +6,4 @@ wget-log
 subtitles_asr/
 subtitles_bigmodel/
 test_videos/
+data/
